@@ -19,10 +19,10 @@ const links = [
     name: "Customers",
     href: "/customers",
   },
-  // {
-  //   name: "Payouts",
-  //   href: "/payouts",
-  // },
+  {
+    name: "Boost Subscriptions",
+    href: "/boosts",
+  },
   // {
   //   name: "Affiliates",
   //   href: "/affiliates",

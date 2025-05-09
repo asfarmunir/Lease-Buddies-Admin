@@ -14,14 +14,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { IoCloseSharp } from "react-icons/io5";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
 import { MoonLoader } from "react-spinners";
-import { getCaptchaToken } from "@/lib/captcha";
-import { verifyCaptcha } from "@/lib/database/actions/user.action";
 
 const formSchema = z.object({
   email: z.string().min(2, { message: "Email is required" }),
