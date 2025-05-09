@@ -157,10 +157,24 @@
 
 // export default page;
 
+import Image from "next/image";
 import React from "react";
 
 const page = () => {
-  return <div>page</div>;
+  return (
+    <div className=" w-full h-[80svh] flex items-center justify-center flex-col gap-4">
+      <Image
+        src={"/logo.svg"}
+        width={137}
+        height={137}
+        alt="logo"
+        className="w-56"
+      />
+      <h1 className="text-3xl text-primary-50 font-bold">
+        Welcome to the Dashboard
+      </h1>
+    </div>
+  );
 };
 
 export default page;
