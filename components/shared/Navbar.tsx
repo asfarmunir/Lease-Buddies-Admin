@@ -100,7 +100,7 @@ const Navbar = () => {
           <RxHamburgerMenu className="w-7 h-7" />
         </SheetTrigger>
         <SheetContent className=" dark:bg-primary p-4 border-none">
-          <Image src={"/images/logo.svg"} width={137} height={137} alt="logo" />
+          <Image src={"/logo.svg"} width={137} height={137} alt="logo" />
           <div className="flex flex-col-reverse items-center -mt-16 justify-center h-full gap-2">
             {session.status === "authenticated" ? (
               <div className=" mt-5 flex flex-col-reverse items-center gap-4">
