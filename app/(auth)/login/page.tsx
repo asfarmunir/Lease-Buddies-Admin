@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -19,6 +19,7 @@ import Image from "next/image";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
 import { MoonLoader } from "react-spinners";
+import { useSession } from "next-auth/react";
 
 const formSchema = z.object({
   email: z.string().min(2, { message: "Email is required" }),
@@ -26,6 +27,9 @@ const formSchema = z.object({
 });
 
 const AddClient = () => {
+  const { status } = useSession();
+  const router = useRouter();
+
   const [loading, setLoading] = React.useState<boolean>(false);
   const [showPassword, setShowPassword] = React.useState<boolean>(false);
   const form = useForm({
@@ -36,35 +40,39 @@ const AddClient = () => {
     },
   });
 
-  const router = useRouter();
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/grounds");
+    }
+  }, [status]);
+
   async function onSubmit(values: any) {
     setLoading(true);
 
-    // const token = await getCaptchaToken();
+    try {
+      const { email, password } = values;
+      const res = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
 
-    // const captchaResponse = await verifyCaptcha(token);
+      console.log("SignIn Response:", res);
 
-    // if (!captchaResponse.success) {
-    //   toast.error(captchaResponse.message);
-    //   setLoading(false);
-    //   return;
-    // }
+      if (!res?.ok) {
+        toast.error(res?.error || "Login failed");
+        setLoading(false);
+        return;
+      }
 
-    const { email, password } = values;
-    const res = await signIn("credentials", {
-      email,
-      password,
-      redirect: false,
-    });
-    console.log(res);
-    if (!res!.ok) {
-      toast.error(res!.error);
+      toast.success("Logged in successfully");
+      router.push("/grounds");
+    } catch (error) {
+      console.error("Login Error:", error);
+      toast.error("An error occurred during login");
+    } finally {
       setLoading(false);
-      return;
     }
-    toast.success("Logged in successfully");
-    router.push("/grounds");
-    setLoading(false);
   }
 
   return (
