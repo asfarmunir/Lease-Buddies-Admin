@@ -4,6 +4,7 @@ import crypto from 'crypto';
 import { resetEmail } from '@/lib/resetEmail';
 import Admin from '@/lib/database/admin.modal';
 import { connectToDatabase } from '@/lib/database';
+import { sendPasswordResetEmail } from '@/lib/mailgun';
 
 export async function POST(req: NextRequest) {
   try {
@@ -33,9 +34,7 @@ export async function POST(req: NextRequest) {
     // Generate the password reset link (fallback link)
     const resetLink = `${process.env.APP_URL}/reset-password/${userId}?token=${resetToken}`;
 
-    console.log("🚀 ~ POST ~ resetLink:", resetLink)
-    // Send the email with the reset link
-      await resetEmail(email, "Password Reset", resetLink);  
+    await sendPasswordResetEmail(email, resetLink);
 
     return NextResponse.json({ message: 'Reset email sent successfully' }, { status: 200 });
   } catch (error) {

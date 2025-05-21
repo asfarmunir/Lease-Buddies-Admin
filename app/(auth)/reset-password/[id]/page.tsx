@@ -74,7 +74,7 @@ const Page = ({ params: { id }, searchParams: { token } }: props) => {
 
       if (response.status === 200) {
         toast.success("Password reset successfully");
-        router.push("/");
+        router.push("/login");
       }
     } catch (error) {
       toast.error("An error occurred during the password reset");
@@ -83,7 +83,7 @@ const Page = ({ params: { id }, searchParams: { token } }: props) => {
   }
 
   return (
-    <div className="w-full flex h-[70vh] items-center justify-center mt-[4rem] gap-16 pb-4">
+    <div className="w-full flex h-[70vh] items-center justify-center  gap-16 pb-4">
       <div className="bg-primary-200 w-full sm:w-fit sm:min-w-[459px] 2xl:mt-6 2xl:min-w-[500px] mt-24 md:mt-0 flex flex-col items-center rounded-lg p-7 px-[2.18rem] 2xl:p-10">
         <h2 className="text-xl md:text-2xl 2xl:text-3xl font-bold text-white mb-1 2xl:mb-2">
           Reset Your Password

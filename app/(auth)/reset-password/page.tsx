@@ -54,13 +54,6 @@ const Page = () => {
   return (
     <div className=" w-full flex h-[70svh] items-center mt-4 justify-center gap-16 pb-4">
       <div className=" bg-primary-200/50 w-full sm:w-fit sm:min-w-[459px] 2xl:mt-6 2xl:min-w-[500px] mt-24 md:mt-0 flex flex-col items-center rounded-lg p-7  2xl:p-10 ">
-        <Image
-          src="/images/logo.svg"
-          alt="logo"
-          width={150}
-          height={150}
-          className="mb-4"
-        />
         <h2 className=" text-xl md:text-2xl 2xl:text-3xl font-bold text-white mb-1 2xl:mb-2">
           VERIFY YOUR EMAIL
         </h2>

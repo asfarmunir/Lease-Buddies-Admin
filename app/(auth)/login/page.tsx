@@ -170,7 +170,7 @@ const AddClient = () => {
           <div className="flex flex-col w-full mt-2 items-center justify-center">
             <Button
               type="submit"
-              className="bg-gradient-to-t from-[#3A99D3] to-[#FFE7A9] mb-4   w-full rounded-xl  mt-2 text-black font-bold py-6 px-10 2xl:text-lg flex items-center justify-center   focus:outline-none focus:shadow-outline"
+              className="bg-gradient-to-t from-[#3A99D3] to-[#f8f8f8] mb-4   w-full rounded-xl  mt-2 text-black font-bold py-6 px-10 2xl:text-lg flex items-center justify-center   focus:outline-none focus:shadow-outline"
             >
               {loading ? (
                 <MoonLoader size={25} />
